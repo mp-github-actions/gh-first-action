@@ -10,3 +10,12 @@ jobs:
         run:
           echo Add other actions to build,
           echo test, and deploy your project.
+      - name: Create temporary file to upload
+        run:
+          echo "<html><body><a href=\"target.html\">Follow link</a></body></html>" > index.html
+          echo "<html><body><h1>Target</h1></body></html>" > target.html
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          path: "*.html"
+          retention-days: 1
